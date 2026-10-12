@@ -1,0 +1,18 @@
+packages:
+  - sdk
+  - app
+
+allowBuilds:
+  bigint-buffer: true
+  blake-hash: true
+  bufferutil: true
+  esbuild: true
+  utf-8-validate: true
+  sharp: true
+  unrs-resolver: true
+  protobufjs: false
+
+# jito-ts (via @pythnetwork/solana-utils) pins web3.js 1.77, whose rpc-websockets
+# import path no longer exists. Force one modern web3.js everywhere.
+overrides:
+  "@solana/web3.js": "^1.98.4"

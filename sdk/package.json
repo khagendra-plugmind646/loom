@@ -1,0 +1,31 @@
+{
+  "name": "@loom/sdk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "@coral-xyz/anchor": "0.32.1",
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
+    "bn.js": "^5.2.5",
+    "poseidon-lite": "^0.3.0"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./prover": "./src/prover.ts"
+  },
+  "peerDependencies": {
+    "snarkjs": "0.7.6"
+  },
+  "peerDependenciesMeta": {
+    "snarkjs": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.2.0"
+  }
+}

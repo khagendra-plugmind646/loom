@@ -1,0 +1,358 @@
+@import "tailwindcss";
+
+/* `dark:` utilities follow the theme toggle (data-theme on <html>), not the OS setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Light institutional fintech look: white surfaces, navy ink, one violet accent,
+   and the Solana violet→green gradient used sparingly for brand moments. */
+:root {
+  color-scheme: light;
+  --bg: #f8f9fb;
+  --surface: #ffffff;
+  --surface-2: #f1f3f7;
+  --border: #e4e7ee;
+  --border-strong: #cfd5e0;
+  --fg: #0b1220;
+  --muted: #5b6577;
+  --ink: #0b1220;
+  --ink-fg: #ffffff;
+  --accent: #6142f5;
+  --accent-hover: #4f30e6;
+  --accent-fg: #ffffff;
+  --accent-soft: #efebff;
+  --mint: #12b886;
+  --good: #0e9f6e;
+  --good-soft: #e6f7f0;
+  --warn: #b45309;
+  --warn-soft: #fdf3e2;
+  --bad: #dc3545;
+  --bad-soft: #fdecee;
+  --grid-line: #0b122010;
+  --band: #0b1220;
+  --band-border: transparent;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #090d16;
+  --surface: #10151f;
+  --surface-2: #171e2b;
+  --border: #222a38;
+  --border-strong: #334055;
+  --fg: #e8ecf3;
+  --muted: #8f9bb0;
+  --ink: #f1f4f9;
+  --ink-fg: #0b1220;
+  --accent: #8b74ff;
+  --accent-hover: #a391ff;
+  --accent-fg: #ffffff;
+  --accent-soft: #8b74ff1f;
+  --mint: #2dd4a4;
+  --good: #34d399;
+  --good-soft: #34d3991a;
+  --warn: #f5b14c;
+  --warn-soft: #f5b14c1a;
+  --bad: #f87171;
+  --bad-soft: #f871711a;
+  --grid-line: #ffffff0d;
+  --band: #0e1422;
+  --band-border: #222a38;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-ink: var(--ink);
+  --color-ink-fg: var(--ink-fg);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-mint: var(--mint);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "tnum" 1, "cv11" 1;
+  overflow-x: clip; /* full-bleed sections use 100vw */
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+}
+
+/* Small uppercase label above headings */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Brand gradient text (Solana violet → green) */
+.text-gradient {
+  background: linear-gradient(90deg, #6142f5 0%, #8b5cf6 40%, #12b886 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero backdrop: soft violet and mint light, plus a faint grid that fades out */
+.hero-bg {
+  background:
+    radial-gradient(40% 50% at 80% 20%, #6142f51a 0%, transparent 70%),
+    radial-gradient(35% 45% at 10% 70%, #12b88614 0%, transparent 70%),
+    var(--bg);
+}
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+}
+
+/* Dark navy band used for contrast sections */
+.ink-band {
+  background:
+    radial-gradient(50% 80% at 85% 0%, #6142f540 0%, transparent 60%),
+    radial-gradient(40% 70% at 0% 100%, #12b88626 0%, transparent 60%),
+    var(--band);
+  border-block: 1px solid var(--band-border);
+  color: #ffffff;
+}
+
+/* FAQ accordion marker */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* Decorative glows and full-bleed sections can reach past the viewport edge; never let them
+   scroll the page sideways. `clip` (unlike `hidden`) keeps the sticky header working. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Solana wallet-adapter button and modal, matched to the design system */
+.wallet-adapter-button {
+  font-family: inherit !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 0 16px !important;
+  /* the label must stay on one line: wrapped, it spills out of the button and looks blank */
+  white-space: nowrap;
+}
+@media (max-width: 639px) {
+  .wallet-adapter-button {
+    font-size: 13px !important;
+    padding: 0 12px !important;
+  }
+}
+.wallet-adapter-button-trigger {
+  background: var(--ink) !important;
+  color: var(--ink-fg) !important;
+}
+.wallet-adapter-button-trigger:not([disabled]):hover {
+  opacity: 0.9;
+}
+.wallet-adapter-dropdown-list {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 12px !important;
+  box-shadow: 0 12px 32px #0b12201f !important;
+}
+.wallet-adapter-dropdown-list-item {
+  color: var(--fg) !important;
+  border-radius: 8px !important;
+}
+.wallet-adapter-dropdown-list-item:not([disabled]):hover {
+  background: var(--surface-2) !important;
+}
+
+/* ---------- Motion (home page) ----------
+   Content is visible by default; it only starts hidden once the init script has
+   set data-motion (JS on and the visitor hasn't asked for reduced motion). */
+[data-motion] .reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal {
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+/* Above-the-fold entrance: pure CSS, runs on first paint without waiting for JS */
+[data-motion] .rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+[data-motion] .reveal-line:not(.in) {
+  transform: scaleX(0);
+}
+.reveal-line {
+  transform-origin: left;
+  transition: transform 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s;
+}
+
+/* ---------- CSS 3D escrow vault ---------- */
+.vault {
+  --size: 200px;
+  --half: calc(var(--size) / 2);
+  perspective: 1100px;
+}
+@media (min-width: 640px) {
+  .vault {
+    --size: 240px;
+  }
+}
+.vault-tilt {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  transform-style: preserve-3d;
+  transform: rotateX(calc(-16deg + var(--tx, 0deg))) rotateY(var(--ty, 0deg));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.vault-spin {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: vault-spin 28s linear infinite;
+}
+.vault-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background:
+    linear-gradient(155deg, #ffffff38 0%, transparent 32%),
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 11%, transparent), color-mix(in srgb, var(--mint) 8%, transparent)),
+    repeating-linear-gradient(90deg, transparent 0 23px, color-mix(in srgb, var(--accent) 9%, transparent) 23px 24px);
+  box-shadow:
+    inset 0 0 40px color-mix(in srgb, var(--accent) 22%, transparent),
+    0 0 1px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.vault-face.f1 { transform: translateZ(var(--half)); }
+.vault-face.f2 { transform: rotateY(180deg) translateZ(var(--half)); }
+.vault-face.f3 { transform: rotateY(90deg) translateZ(var(--half)); }
+.vault-face.f4 { transform: rotateY(-90deg) translateZ(var(--half)); }
+.vault-face.f5 { transform: rotateX(90deg) translateZ(var(--half)); }
+.vault-face.f6 { transform: rotateX(-90deg) translateZ(var(--half)); }
+
+.vault-coin {
+  position: absolute;
+  inset: 22%;
+  transform-style: preserve-3d;
+  animation:
+    coin-sway 7s ease-in-out infinite,
+    coin-bob 4.5s ease-in-out infinite;
+}
+.vault-coin-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #3b3f58, #1b2033);
+}
+.vault-coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 25%, #2a3150, #0b1220 70%);
+  box-shadow:
+    inset 0 0 0 3px #ffffff1f,
+    0 0 50px #9945ff55;
+}
+
+.vault-glow {
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 35%, transparent), transparent);
+  filter: blur(10px);
+}
+.vault-shadow {
+  background: radial-gradient(closest-side, #0b122040, transparent);
+}
+
+/* Stablecoins streaming out of the vault */
+.flow-coin {
+  position: absolute;
+  opacity: 0;
+  animation: flow 4.2s cubic-bezier(0.3, 0.1, 0.3, 1) infinite;
+  animation-delay: var(--d, 0s);
+}
+.float-chip {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes vault-spin {
+  to { transform: rotateY(360deg); }
+}
+@keyframes coin-sway {
+  0%, 100% { transform: rotateY(-28deg); }
+  50% { transform: rotateY(28deg); }
+}
+@keyframes coin-bob {
+  0%, 100% { translate: 0 -6px; }
+  50% { translate: 0 6px; }
+}
+@keyframes flow {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  15% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--x, 150px), var(--y, 120px)) scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Paused while scrolled out of view, and still for reduced-motion visitors */
+.vault[data-paused] *,
+.vault-scene[data-paused] * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vault *,
+  .vault-scene * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .flow-coin {
+    opacity: 0 !important;
+  }
+}

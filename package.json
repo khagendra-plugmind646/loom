@@ -1,0 +1,53 @@
+{
+  "name": "loom",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "zk:build": "bash zk/scripts/build.sh",
+    "build:program": "anchor build && node scripts/sync-idl.mjs",
+    "test": "mocha --import=tsx --exit --timeout 300000 'tests/**/*.test.ts'",
+    "lint": "pnpm --filter app lint",
+    "sync-idl": "node scripts/sync-idl.mjs",
+    "localnet": "bash scripts/localnet.sh",
+    "bootstrap": "tsx scripts/bootstrap.ts",
+    "faucet": "tsx scripts/faucet.ts",
+    "payouts": "tsx scripts/payouts.ts",
+    "keeper": "tsx scripts/keeper.ts",
+    "indexer": "tsx scripts/indexer.ts",
+    "demo": "tsx scripts/demo.ts",
+    "dev": "pnpm --filter app dev",
+    "typecheck": "tsc -p tsconfig.json && pnpm --filter app exec tsc --noEmit",
+    "prereqs": "bash scripts/prereqs.sh"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "0.32.1",
+    "@loom/sdk": "workspace:*",
+    "@pythnetwork/hermes-client": "^3.1.0",
+    "@pythnetwork/pyth-solana-receiver": "^0.16.0",
+    "@solana/spl-token": "^0.4.15",
+    "@solana/web3.js": "^1.99.0",
+    "circomlib": "2.0.5",
+    "circomlibjs": "0.1.7",
+    "pg": "^8.23.1",
+    "snarkjs": "0.7.6"
+  },
+  "devDependencies": {
+    "@solana/compat": "^8.4.0",
+    "@solana/kit": "^8.4.0",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
+    "chai": "^5.3.3",
+    "litesvm": "~1.5.0",
+    "mocha": "^12.0.3",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "packageManager": "pnpm@11.20.0",
+  "engines": {
+    "node": ">=22"
+  }
+}

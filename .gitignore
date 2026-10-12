@@ -1,0 +1,21 @@
+.DS_Store
+node_modules
+target
+**/*.rs.bk
+test-ledger
+.yarn
+
+# local keys, ledgers & secrets
+.keys/
+.anchor/
+app/.env.local
+app/.env
+app/.data/
+
+# ZK: the phase-1 ptau is re-downloaded by zk/scripts/build.sh; intermediate zkeys are discarded
+zk/ptau/
+zk/build/*_0000.zkey
+.vercel
+.env*
+.env.local
+build-program-output.txt
