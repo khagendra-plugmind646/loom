@@ -1,3 +1,5 @@
+<p align="center"><img src="brand/banner.png" alt="Loom: borrow dollars against your SOL. Verify every step." width="800"></p>
+
 # Loom — transparent SOL-backed stablecoin loans on Solana
 
 **Borrow USDC or USDT against your SOL at a fixed 12% a year, with every escrow and reserve verifiable on-chain, and a zero-knowledge credit history that earns you 8% next time.**
