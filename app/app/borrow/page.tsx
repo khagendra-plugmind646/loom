@@ -45,6 +45,7 @@ import { useNow } from "@/lib/now";
 import { explainError, useSendTx } from "@/lib/send";
 
 const BUFFER_BPS = 100n; // +1% headroom for price moves between quote and signature
+const KEEP_BPS = 25n; // a SOL amount the borrower is ticking through is kept while it still covers the loan with this headroom
 
 type Quote = {
   principal?: bigint;
@@ -100,6 +101,8 @@ export default function BorrowPage() {
   const [recipientInput, setRecipientInput] = useState("");
   const [reading, setReading] = useState<string | null>(null);
   const [accepted, setAccepted] = useState<{ key: string; items: boolean[] }>({ key: "", items: [] });
+  // The SOL amount shown when the borrower started ticking the checklist (see `quote`).
+  const [agreed, setAgreed] = useState<{ principal: bigint; collateral: bigint } | null>(null);
   const [zk, setZk] = useState(true);
   const [note, setNote] = useState<CreditNote | null>(null);
   const [nonce, setNonce] = useState<bigint | null>(null);
@@ -134,7 +137,12 @@ export default function BorrowPage() {
     const p = price.data;
     // Same rules as the program: collateral valued at the lower of Pyth (price − conf) and Chainlink,
     // the 60% line measured from the lower of the two, and a default priced at the higher of the two.
-    const collateral = requiredCollateralLamports(principal, p.lowest, 0n, p.expo, BUFFER_BPS);
+    // The price refreshes every 10 s. Once the checklist is being ticked, keep its SOL amount while it still covers
+    // the loan, so the numbers (and the ticks) don't change under the borrower; a real drop asks for a new amount.
+    const collateral =
+      agreed?.principal === principal && agreed.collateral >= requiredCollateralLamports(principal, p.lowest, 0n, p.expo, KEEP_BPS)
+        ? agreed.collateral
+        : requiredCollateralLamports(principal, p.lowest, 0n, p.expo, BUFFER_BPS);
     // Credit certificates held by this wallet lower the rate (more certificates, lower rate), up to their combined limit.
     const credit = creditTerms(certificates.data ?? [], principal);
     const rateBps = credit?.rateBps ?? INTEREST_BPS;
@@ -175,11 +183,12 @@ export default function BorrowPage() {
       fromPool: poolCash !== undefined && principal <= poolCash,
       error: errors[0],
     };
-  }, [amount, price.data, config.data, available, poolCash, balances.data, now, certificates.data]);
+  }, [amount, price.data, config.data, available, poolCash, balances.data, now, certificates.data, agreed]);
 
   // The checklist must be re-accepted whenever the numbers in it change.
   const termsKey = `${symbol}|${quote?.principal}|${quote?.collateral}|${quote?.rateBps}|${recipient?.toBase58()}`;
   const ticks = accepted.key === termsKey ? accepted.items : [];
+  const repriced = agreed?.principal === quote?.principal && agreed?.collateral !== quote?.collateral && ticks.length === 0;
   const needsNoteBackup = zk && !noteSaved;
 
   const usd = (v: bigint) => (price.data ? (Number(v) * 10 ** price.data.expo).toFixed(2) : "—");
@@ -253,6 +262,7 @@ export default function BorrowPage() {
   function tick(i: number, value: boolean) {
     const items = checklist.map((_, j) => (j === i ? value : !!ticks[j]));
     setAccepted({ key: termsKey, items });
+    if (quote?.principal && quote.collateral) setAgreed({ principal: quote.principal, collateral: quote.collateral });
   }
 
   async function submit() {
@@ -297,6 +307,7 @@ export default function BorrowPage() {
       setNonce(null);
       setNoteSaved(false);
       setAccepted({ key: "", items: [] });
+      setAgreed(null);
     } catch (e) {
       toast({ kind: "error", title: "Couldn't open loan", body: explainError(e) });
     } finally {
@@ -455,7 +466,11 @@ export default function BorrowPage() {
                   <div className="flex items-center justify-between gap-3 border-b border-border bg-surface-2/60 px-4 py-3">
                     <div>
                       <div className="text-sm font-semibold tracking-tight">Step 3 · Confirm before you borrow</div>
-                      <div className="mt-0.5 text-xs text-muted">These are the exact rules the program enforces. Tick each one.</div>
+                      <div className={cx("mt-0.5 text-xs", repriced ? "text-warn" : "text-muted")}>
+                        {repriced
+                          ? "SOL's price fell, so this loan needs more SOL. Please check the amounts and tick again."
+                          : "These are the exact rules the program enforces. Tick each one."}
+                      </div>
                     </div>
                     <span
                       className={cx(
