@@ -1,5 +1,16 @@
 # Loom — transparent SOL-backed stablecoin loans on Solana
 
+**Borrow USDC or USDT against your SOL at a fixed 12% a year, with every escrow and reserve verifiable on-chain, and a zero-knowledge credit history that earns you 8% next time.**
+
+| | |
+|---|---|
+| **Live demo (devnet)** | **[loom-lending.vercel.app](https://loom-lending.vercel.app)**: start at [`/test`](https://loom-lending.vercel.app/test) for a 10-minute guided tour with free test tokens |
+| **Program (devnet)** | [`wrCPKEKsMDgLdpNFJwGK8LSvWVRUnuEsbQVAZAXkoBQ`](https://explorer.solana.com/address/wrCPKEKsMDgLdpNFJwGK8LSvWVRUnuEsbQVAZAXkoBQ?cluster=devnet) |
+| **Proof of reserves** | [`/transparency`](https://loom-lending.vercel.app/transparency): every vault, escrow and loan, recomputed live from the chain |
+| **Pitch video** | _coming soon_ |
+| **Demo video** | _coming soon_ |
+| **Tests** | `pnpm test`: 281 passing, against the real program binary in LiteSVM, including real Groth16 proofs |
+
 > **New here? Start with [SETUP.md](SETUP.md)**: install, run the tests, and run the app locally step by step.
 
 Loom is a Ledn-style lending platform built entirely on Solana:
@@ -239,13 +250,17 @@ Everything Loom stores on-chain (config, reserves, loans with their settlement s
 
 ## Known limitations and next steps
 
-* The 60% seizure rule is based on SOL's price alone, and there is no `add_collateral` instruction yet, so adding SOL or repaying part of a loan doesn't protect it from seizure. A collateral-value rule plus top-ups is the natural next feature.
+* The 60% seizure rule is based on SOL's price. Adding SOL (`add_collateral`, open to anyone) or repaying principal lowers the price at which a loan can be seized, in proportion.
 * Liquidations pay the treasury in **SOL**; the operator converts it (or a Jupiter swap could be added).
 * A borrower can submit any valid Pyth update within the max-age window (default 120 s). This is standard for pull oracles, and the window is bounded.
 * The ZK note lives in the browser (localStorage + downloaded file). Losing it only means losing the ability to mint a certificate, never funds.
 
 ## Verified in this repo
 
-* `pnpm test`: **49/49 passing** (for any loan term): origination and the 2× rule, oracle validation (stale / unverified / foreign / wrong feed / wide confidence), Pyth + Chainlink rules (lower price at open, both must show a drop, default priced at the higher, stale / forged Chainlink feed), USDC + USDT disbursement, partial repayments in mixed stablecoins, overpayment cap, collateral release, maturity enforcement, liquidation and default math, forged-account rejection, admin-only guards, pause, accounting reconciliation, and ZK (valid certificate, double-claim, front-running, inflated claims, unknown roots).
+* `pnpm test`: **281 passing** (for any loan term): origination and the 2× rule, oracle validation (stale / unverified / foreign / wrong feed / wide confidence), Pyth + Chainlink rules (lower price at open, both must show a drop, default priced at the higher, stale / forged Chainlink feed), USDC + USDT disbursement, partial repayments in mixed stablecoins, overpayment cap, collateral release, maturity enforcement, liquidation and default math, forged-account rejection, admin-only guards, pause, accounting reconciliation, and ZK (valid certificate, double-claim, front-running, inflated claims, unknown roots).
 * `pnpm demo` on a real `solana-test-validator` with live Pyth data: borrow → partial USDC + final USDT repayment → SOL released → browser-grade proof (1.2 s) → certificate minted (119k CU).
 * The full UI flow was driven in headless Chrome against localnet: connect wallet → borrow → pay in full → prove in browser → mint → verify → send SOL. It ran with no browser errors and all integrity checks passing.
+
+## License
+
+[MIT](LICENSE)
