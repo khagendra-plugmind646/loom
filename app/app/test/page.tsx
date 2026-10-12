@@ -71,14 +71,14 @@ export default function TestPage() {
     },
     {
       title: "Get devnet SOL for collateral",
-      done: known(balances.data && balances.data.sol >= 500_000_000n),
+      done: known(balances.data && balances.data.sol >= 2_000_000_000n),
       body: (
         <>
           Paste your address into{" "}
           <a className="font-medium text-accent hover:underline" href="https://faucet.solana.com" target="_blank" rel="noreferrer">
             faucet.solana.com ↗
           </a>{" "}
-          and request a few SOL. A $50 loan locks roughly 1 SOL.
+          and request a few SOL. A $100 loan locks about 2 SOL.
           {publicKey && (
             <div className="mt-2">
               <AddrCopy value={publicKey.toBase58()} full />
@@ -111,8 +111,8 @@ export default function TestPage() {
       done: known(all.length > 0),
       body: (
         <>
-          On <Link href="/borrow" className="font-medium text-accent hover:underline">Borrow</Link>, pick an amount, read the checklist (it shows exactly what
-          happens to your SOL in every case) and sign.
+          On <Link href="/borrow" className="font-medium text-accent hover:underline">Borrow</Link>, pick at least $100 (the smallest loan that earns a ZK
+          certificate), read the checklist (it shows exactly what happens to your SOL in every case) and sign.
         </>
       ),
     },
