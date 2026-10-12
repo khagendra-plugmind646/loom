@@ -38,7 +38,7 @@ SOL is priced with two oracles (Pyth and Chainlink): loans open at the lower pri
 
 ## Links
 
-- Live demo: https://loom-lending.vercel.app (guided tour: https://loom-lending.vercel.app/test)
+- Live demo: https://loomzk.vercel.app (guided tour: https://loomzk.vercel.app/test)
 - Code: https://github.com/khagendra-plugmind646/loom
 - Program on Solana Explorer: https://explorer.solana.com/address/wrCPKEKsMDgLdpNFJwGK8LSvWVRUnuEsbQVAZAXkoBQ?cluster=devnet
 

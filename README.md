@@ -6,9 +6,9 @@
 
 | | |
 |---|---|
-| **Live demo (devnet)** | **[loom-lending.vercel.app](https://loom-lending.vercel.app)**: start at [`/test`](https://loom-lending.vercel.app/test) for a 10-minute guided tour with free test tokens |
+| **Live demo (devnet)** | **[loomzk.vercel.app](https://loomzk.vercel.app)**: start at [`/test`](https://loomzk.vercel.app/test) for a 10-minute guided tour with free test tokens |
 | **Program (devnet)** | [`wrCPKEKsMDgLdpNFJwGK8LSvWVRUnuEsbQVAZAXkoBQ`](https://explorer.solana.com/address/wrCPKEKsMDgLdpNFJwGK8LSvWVRUnuEsbQVAZAXkoBQ?cluster=devnet) |
-| **Proof of reserves** | [`/transparency`](https://loom-lending.vercel.app/transparency): every vault, escrow and loan, recomputed live from the chain |
+| **Proof of reserves** | [`/transparency`](https://loomzk.vercel.app/transparency): every vault, escrow and loan, recomputed live from the chain |
 | **Pitch video** | _coming soon_ |
 | **Demo video** | _coming soon_ |
 | **Tests** | `pnpm test`: 281 passing, against the real program binary in LiteSVM, including real Groth16 proofs |
