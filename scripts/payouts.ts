@@ -1,5 +1,5 @@
 /**
- * Points Loom at the payout wallet and sets how much USDC/USDT the program may pay out from it.
+ * Points Loomzk at the payout wallet and sets how much USDC/USDT the program may pay out from it.
  *
  *   pnpm payouts --cluster devnet --admin ~/.config/solana/id.json [--limit 250000] [--sweep-vaults]
  *
@@ -24,7 +24,7 @@ const admin = loadKeypair(arg("admin", `${ROOT}/.keys/admin.json`)!);
 
 async function main() {
   const config = await client.fetchConfig();
-  if (!config) throw new Error("Loom is not initialized on this cluster — run pnpm bootstrap first");
+  if (!config) throw new Error("Loomzk is not initialized on this cluster — run pnpm bootstrap first");
   const wallet = new PublicKey(appEnv("LOOM_ADMIN_WALLET") ?? config.treasury.toBase58());
   console.log(`cluster ${c} · payout wallet ${wallet.toBase58()}`);
 

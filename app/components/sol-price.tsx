@@ -10,7 +10,7 @@ const fmt = (n: number) => n.toLocaleString(undefined, { minimumFractionDigits: 
 
 /**
  * Live price of 1 SOL in USD, USDC and USDT: the same price the Borrow page quotes from (the lower of
- * Pyth and Chainlink). Loom values USDC and USDT at $1, exactly like the program.
+ * Pyth and Chainlink). Loomzk values USDC and USDT at $1, exactly like the program.
  */
 export function SolPrice() {
   const price = useSolPrice();

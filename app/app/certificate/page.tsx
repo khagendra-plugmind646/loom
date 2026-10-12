@@ -31,7 +31,7 @@ export default function CertificatePage() {
     <>
       <PageHeader
         title="Zero-knowledge repayment certificate"
-        subtitle="Prove you repaid a Loom loan in full and on time, without revealing which loan, how much exactly, or your borrowing wallet. The wallet holding the certificate borrows at 8% a year instead of 12%."
+        subtitle="Prove you repaid a Loomzk loan in full and on time, without revealing which loan, how much exactly, or your borrowing wallet. The wallet holding the certificate borrows at 8% a year instead of 12%."
       >
         <Segmented
           value={tab}
@@ -229,7 +229,7 @@ function MintCertificate() {
           />
           {parsed.error && <Notice tone="bad">{parsed.error}</Notice>}
           {parsed.note && allLoans.isLoading && <Skeleton className="h-10" />}
-          {match === null && <Notice tone="bad">No Loom loan was opened with this note.</Notice>}
+          {match === null && <Notice tone="bad">No Loomzk loan was opened with this note.</Notice>}
           {match && match.status !== "repaid" && (
             <Notice tone="warn">This loan is {match.status}. Certificates are only available for loans repaid in full within the term.</Notice>
           )}
@@ -253,7 +253,7 @@ function MintCertificate() {
                   ))}
                 </div>
                 <p className="mt-2 text-xs text-muted">
-                  Statement: “I borrowed at least ${claim !== null ? formatStable(claim, 0) : "—"} on Loom and repaid principal + 12% within 12 months.” Round thresholds keep you inside a larger anonymity set.
+                  Statement: “I borrowed at least ${claim !== null ? formatStable(claim, 0) : "—"} on Loomzk and repaid principal + 12% within 12 months.” Round thresholds keep you inside a larger anonymity set.
                 </p>
               </Field>
 
@@ -305,7 +305,7 @@ function MintCertificate() {
         </ul>
         <h3 className="mb-3 mt-6 text-base font-semibold">What is proven</h3>
         <ul className="space-y-2 text-sm text-muted">
-          <li>• The loan is in Loom&apos;s on-chain credit tree, which only fully repaid loans enter</li>
+          <li>• The loan is in Loomzk&apos;s on-chain credit tree, which only fully repaid loans enter</li>
           <li>• Repaid in full: principal + interest for the time borrowed (the tree only accepts full, on-time repayments)</li>
           <li>• Closed ≤ 365 days after opening</li>
           <li>• Principal ≥ your chosen threshold</li>
@@ -342,7 +342,7 @@ function VerifyCertificate() {
           ) : certificates.isLoading ? (
             <Skeleton className="h-20" />
           ) : held.length === 0 ? (
-            <Notice>This wallet holds no Loom repayment certificate.</Notice>
+            <Notice>This wallet holds no Loomzk repayment certificate.</Notice>
           ) : (
             held.map((c) => (
               <div key={c.address.toBase58()} className="mb-3 rounded-xl bg-good-soft p-4 text-sm">
@@ -368,7 +368,7 @@ function VerifyCertificate() {
       <Card>
         <CardTitle hint={`${certificates.data?.length ?? "—"} issued`}>Verifying key</CardTitle>
         <p className="text-sm text-muted">
-          Proofs are checked by the Loom program with Solana&apos;s alt_bn128 syscalls against a verifying key compiled into the program. The same key is published here so anyone can verify proofs off-chain too.
+          Proofs are checked by the Loomzk program with Solana&apos;s alt_bn128 syscalls against a verifying key compiled into the program. The same key is published here so anyone can verify proofs off-chain too.
         </p>
         {vkey.data && (
           <Row label="Public inputs">

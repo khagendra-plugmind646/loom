@@ -101,7 +101,7 @@ export default function TestPage() {
               </Button>
             </div>
           ) : (
-            <span> Ask the Loom team for test tokens with the Feedback button.</span>
+            <span> Ask the Loomzk team for test tokens with the Feedback button.</span>
           )}
         </>
       ),
@@ -157,7 +157,7 @@ export default function TestPage() {
   return (
     <>
       <PageHeader
-        title="Help us test Loom"
+        title="Help us test Loomzk"
         subtitle="Try every feature on Solana devnet in about 10 minutes, then tell us what was confusing or missing. Each step ticks itself off from your wallet's on-chain activity."
       >
         <Badge tone={done === steps.length ? "good" : "neutral"}>

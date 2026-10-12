@@ -33,7 +33,7 @@ export function loadNote(loan: string): CreditNote | null {
 export function downloadNote(loan: string, note: CreditNote) {
   const blob = new Blob(
     [
-      `Loom credit note — keep this private.\n` +
+      `Loomzk credit note — keep this private.\n` +
         `Loan: ${loan}\n` +
         `It lets you mint an anonymous ZK repayment certificate after you repay.\n\n` +
         `${encodeNote(note)}\n`,
@@ -42,7 +42,7 @@ export function downloadNote(loan: string, note: CreditNote) {
   );
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `loom-credit-note-${loan.slice(0, 8)}.txt`;
+  a.download = `loomzk-credit-note-${loan.slice(0, 8)}.txt`;
   a.click();
   URL.revokeObjectURL(a.href);
 }
@@ -61,6 +61,6 @@ export function savedNotes(): { loan: string; note: CreditNote }[] {
 /** Accepts either the raw note string or the downloaded .txt contents. */
 export function extractNote(text: string): CreditNote {
   const line = text.split(/\s+/).find((l) => l.startsWith("loom-note-v1:"));
-  if (!line) throw new Error("No Loom credit note found");
+  if (!line) throw new Error("No Loomzk credit note found");
   return decodeNote(line);
 }

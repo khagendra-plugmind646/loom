@@ -38,7 +38,7 @@ export function OpenInWallet() {
   return (
     <div className="border-b border-border bg-accent-soft px-4 py-2.5 text-sm">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-2">
-        <span className="text-fg">On a phone? Open Loom in your wallet app to connect:</span>
+        <span className="text-fg">On a phone? Open Loomzk in your wallet app to connect:</span>
         <div className="flex gap-2">
           {APPS.map((a) => (
             <a key={a.name} href={a.link(here.url, here.ref)} className="rounded-lg bg-surface px-2.5 py-1 font-medium text-accent">

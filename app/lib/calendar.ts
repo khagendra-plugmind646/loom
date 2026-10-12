@@ -5,7 +5,7 @@ export function downloadCalendarEvent(e: { title: string; at: Date; description:
   const ics = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Loom//Loan deadline//EN",
+    "PRODID:-//Loomzk//Loan deadline//EN",
     "BEGIN:VEVENT",
     `UID:${e.filename}@loom`,
     `DTSTAMP:${stamp(new Date())}`,

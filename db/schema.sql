@@ -1,4 +1,4 @@
--- Loom admin database: a private copy of everything Loom stores on-chain.
+-- Loomzk admin database: a private copy of everything Loomzk stores on-chain.
 -- Written only by the indexer (`pnpm indexer`), read only by the admin (/admin, psql, TablePlus).
 -- Safe to run repeatedly. Amounts are raw base units: stablecoins have 6 decimals, SOL has 9
 -- (use the *_readable views for human units).

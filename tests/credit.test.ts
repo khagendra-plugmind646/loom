@@ -169,7 +169,7 @@ describe("credit: certificate validation", () => {
     // a token account (owned by the token program)
     const ata = w.fund(w.usdc, holder.publicKey, 0n);
     await tryOpen(holder, [a, ata], "InvalidCertificate");
-    // a Loom account of another type (the config)
+    // a Loomzk account of another type (the config)
     await tryOpen(holder, [a, w.client.pda.config()], "InvalidCertificate");
     // a non-existent account
     await tryOpen(holder, [a, Keypair.generate().publicKey], "InvalidCertificate");

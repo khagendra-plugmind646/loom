@@ -32,7 +32,7 @@ export function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:gap-6">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
           <Logo />
-          Loom
+          <Wordmark />
           {CLUSTER !== "mainnet-beta" && <span className="rounded-md bg-accent-soft px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-accent">{CLUSTER}</span>}
         </Link>
         <nav className="hidden flex-1 items-center justify-center gap-1 md:flex">
@@ -90,5 +90,14 @@ export function Logo() {
       <path d="M10 9h3v11h10v3H10z" fill="white" />
       <circle cx="21.5" cy="13" r="3" fill="white" opacity=".9" />
     </svg>
+  );
+}
+
+/** "Loom" with a small raised "zk", as in brand/banner.svg. */
+export function Wordmark() {
+  return (
+    <span>
+      Loom<sup className="ml-px text-[0.6em] font-bold text-accent">zk</sup>
+    </span>
   );
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
 import { FeedbackButton } from "@/components/feedback-button";
-import { Logo, Nav } from "@/components/nav";
+import { Logo, Nav, Wordmark } from "@/components/nav";
 import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
@@ -17,7 +17,7 @@ const SITE_URL =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Loom — SOL-backed stablecoin loans",
+  title: "Loomzk — SOL-backed stablecoin loans",
   description:
     "Borrow USDC or USDT against SOL. Collateral sits in on-chain escrow, terms are enforced by a public Solana program, and repayments can be proven with zero-knowledge certificates.",
 };
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <div>
                 <div className="flex items-center gap-2 text-lg font-semibold tracking-tight">
                   <Logo />
-                  Loom
+                  <Wordmark />
                 </div>
                 <p className="mt-3 max-w-xs text-sm text-muted">
                   Non-custodial, fixed-rate stablecoin loans backed by SOL. Every account is public and verifiable on Solana.
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
             <div className="border-t border-border">
               <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-muted sm:flex-row sm:justify-between">
-                <span>© Loom. Built on Solana.</span>
+                <span>© Loomzk. Built on Solana.</span>
                 <span>Loans carry risk: if SOL falls to 60% of its opening price, the collateral is seized.</span>
               </div>
             </div>

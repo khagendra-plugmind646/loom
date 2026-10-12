@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds the Loom repayment-certificate circuit end to end:
+# Builds the Loomzk repayment-certificate circuit end to end:
 #   circom -> r1cs/wasm -> Groth16 setup (phase-2 on top of PSE perpetual powers of tau)
 #   -> verification key -> Rust verifying key for the on-chain program
 #   -> wasm + zkey copied into the Next.js app for in-browser proving.

@@ -90,7 +90,7 @@ async function settle(loan: LoanAccount, treasury: PublicKey, useSponsored: bool
 
 async function tick() {
   const config = await client.fetchConfig();
-  if (!config) return log("Loom is not initialized on this cluster");
+  if (!config) return log("Loomzk is not initialized on this cluster");
   const loans = (await client.fetchLoans()).filter((l) => l.status === "active");
   const sponsored = await sponsoredPrice(config.maxPriceAgeSecs);
   const pyth = sponsored ?? (await hermesPrice());

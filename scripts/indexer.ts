@@ -1,5 +1,5 @@
 /**
- * Indexer: copies everything Loom stores on-chain into the admin's private Postgres database.
+ * Indexer: copies everything Loomzk stores on-chain into the admin's private Postgres database.
  *
  *   pnpm indexer --cluster devnet [--interval 15] [--once]
  *
@@ -69,7 +69,7 @@ function plain(v: unknown): unknown {
 
 async function syncAccounts() {
   const config = await rpc("config", () => client.fetchConfig());
-  if (!config) throw new Error("Loom is not initialized on this cluster");
+  if (!config) throw new Error("Loomzk is not initialized on this cluster");
   await db.query(
     `INSERT INTO protocol (program_id, cluster, admin, treasury, paused, liquidation_threshold_bps, liquidation_penalty_bps,
        max_price_age_secs, max_confidence_bps, min_principal, max_principal, next_loan_id, stats, synced_at)

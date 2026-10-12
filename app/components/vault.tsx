@@ -81,7 +81,7 @@ export function Vault() {
           </span>
           <span>
             <span className="block text-xs font-semibold">Escrow PDA</span>
-            <span className="block text-[11px] text-muted">Owned by the Loom program</span>
+            <span className="block text-[11px] text-muted">Owned by the Loomzk program</span>
           </span>
         </div>
       </div>

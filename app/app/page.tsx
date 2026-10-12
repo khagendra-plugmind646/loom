@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { LiveStats } from "@/components/live-stats";
 import { LoanPreview } from "@/components/loan-preview";
+import { Wordmark } from "@/components/nav";
 import { RevealObserver } from "@/components/motion";
 import { SolPrice } from "@/components/sol-price";
 import { Vault } from "@/components/vault";
@@ -30,12 +31,12 @@ const steps = [
   {
     n: "01",
     title: "Lock SOL in escrow",
-    body: "Your SOL moves into an escrow account owned by the Loom program, not by us. It must be worth at least 2× the loan.",
+    body: "Your SOL moves into an escrow account owned by the Loomzk program, not by us. It must be worth at least 2× the loan.",
   },
   {
     n: "02",
     title: "Receive USDC or USDT instantly",
-    body: "In the same transaction, the program sends the stablecoin you chose, from the lending pool or the Loom treasury, straight to your wallet or to another wallet you pick.",
+    body: "In the same transaction, the program sends the stablecoin you chose, from the lending pool or the Loomzk treasury, straight to your wallet or to another wallet you pick.",
   },
   {
     n: "03",
@@ -151,13 +152,13 @@ const roadmap = [
 
 const faqs = [
   { q: "How much can I borrow?", a: "Each loan is currently between $10 and $100,000 in USDC or USDT, limited by the SOL you lock (at least 2× the loan) and by what the lending pool and treasury can lend." },
-  { q: "What does a loan cost?", a: "12% a year on what you still owe, charged only for the time you borrow (minimum 30 days), fixed when the loan opens. Repay on time and your ZK credit certificates lower it to 8%, then 7%, then 6%. No other Loom fees and no early-repayment penalty; you only pay normal Solana network fees." },
+  { q: "What does a loan cost?", a: "12% a year on what you still owe, charged only for the time you borrow (minimum 30 days), fixed when the loan opens. Repay on time and your ZK credit certificates lower it to 8%, then 7%, then 6%. No other Loomzk fees and no early-repayment penalty; you only pay normal Solana network fees." },
   { q: "Can I repay early or in parts?", a: "Yes. Repay any time within 12 months, all at once or in several payments, in USDC or USDT. The final payment releases your SOL automatically." },
   { q: "What happens if the SOL price falls?", a: "If SOL trades at or below 60% of its price when your loan opened, the loan is closed and all the escrowed SOL goes to the treasury. You keep the stablecoins you borrowed. You can add SOL to a loan at any time to lower that line. If the loan isn't repaid by its deadline, the treasury takes only SOL worth what you still owe and the rest is sent back to your wallet." },
-  { q: "Who holds my SOL while the loan is open?", a: "A program-derived escrow account owned by the Loom program. No person, including the Loom team, holds a key to it. Only a full repayment or the published seizure rule can move it." },
-  { q: "Where does the money come from?", a: "From the lending pool, where depositors supply USDC and USDT and earn the interest, or from the Loom treasury when the pool can't cover a loan. The program pays you in the same transaction that locks your collateral." },
-  { q: "What is a ZK repayment certificate?", a: "A zero-knowledge proof that you repaid a Loom loan of at least a chosen amount, in full and on time. You can claim it from a fresh wallet, so it proves your track record without linking back to the loan." },
-  { q: "Is Loom live on mainnet?", a: "Not yet. Loom runs on Solana devnet today. An independent audit, a trusted-setup ceremony and multisig controls come before mainnet." },
+  { q: "Who holds my SOL while the loan is open?", a: "A program-derived escrow account owned by the Loomzk program. No person, including the Loomzk team, holds a key to it. Only a full repayment or the published seizure rule can move it." },
+  { q: "Where does the money come from?", a: "From the lending pool, where depositors supply USDC and USDT and earn the interest, or from the Loomzk treasury when the pool can't cover a loan. The program pays you in the same transaction that locks your collateral." },
+  { q: "What is a ZK repayment certificate?", a: "A zero-knowledge proof that you repaid a Loomzk loan of at least a chosen amount, in full and on time. You can claim it from a fresh wallet, so it proves your track record without linking back to the loan." },
+  { q: "Is Loomzk live on mainnet?", a: "Not yet. Loomzk runs on Solana devnet today. An independent audit, a trusted-setup ceremony and multisig controls come before mainnet." },
 ];
 
 const builtWith = [
@@ -297,7 +298,7 @@ export default function Home() {
       </Section>
 
       {/* Solution */}
-      <Section eyebrow="The Loom approach" title="A lender that is a public program, not a company.">
+      <Section eyebrow="The Loomzk approach" title="A lender that is a public program, not a company.">
         <div className="grid overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3 [&>*]:bg-surface" style={{ gap: 1 }}>
           {features.map((f, i) => (
             <div key={f.title} style={d((i % 3) * 90)} className="reveal p-7">
@@ -377,7 +378,7 @@ export default function Home() {
             <div className="absolute -inset-8 rounded-[40px] bg-gradient-to-br from-accent/40 to-mint/30 blur-3xl" aria-hidden />
             <div className="relative rounded-3xl border border-white/15 bg-white/[0.06] p-7 backdrop-blur-xl">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#a99bff]">Loom credit certificate</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#a99bff]">Loomzk credit certificate</span>
                 <span className="rounded-full bg-mint/15 px-2.5 py-1 text-xs font-semibold text-mint">Verified</span>
               </div>
               <div className="mt-8 text-sm text-[#b8c0d0]">This wallet proved it repaid a loan of at least</div>
@@ -414,7 +415,7 @@ export default function Home() {
             ))}
           </div>
           <div className="relative rounded-3xl bg-[#0b1220] p-7 text-white shadow-[0_24px_64px_-20px_#0b122066] dark:border dark:border-border dark:bg-surface-2">
-            <div className="text-xs font-semibold uppercase tracking-[0.08em] text-[#a99bff]">Loom program · Anchor</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.08em] text-[#a99bff]">Loomzk program · Anchor</div>
             <div className="mt-3 text-2xl font-semibold tracking-tight">The only one who can move funds</div>
             <ul className="mt-6 space-y-2 font-mono text-sm">
               {[
@@ -441,14 +442,14 @@ export default function Home() {
       </Section>
 
       {/* Comparison */}
-      <Section eyebrow="Why Loom" title="How Loom compares.">
+      <Section eyebrow="Why Loomzk" title="How Loomzk compares.">
         {/* phones: one card per row, so nothing hides off-screen */}
         <div className="reveal divide-y divide-border rounded-3xl border border-border bg-surface sm:hidden">
           {compareRows.map(([label, loom, cefi, pools]) => (
             <div key={label} className="p-5">
               <div className="text-xs font-semibold uppercase tracking-[0.06em] text-muted">{label}</div>
               <div className="mt-2 flex items-start gap-2 text-[15px] font-medium">
-                <IconCheck width={16} height={16} className="mt-1 shrink-0 text-good" /> <span>Loom: {loom}</span>
+                <IconCheck width={16} height={16} className="mt-1 shrink-0 text-good" /> <span>Loomzk: {loom}</span>
               </div>
               <div className="mt-2 space-y-1 text-sm text-muted">
                 <div>Centralized lenders: {cefi}</div>
@@ -463,7 +464,7 @@ export default function Home() {
               <tr className="border-b border-border">
                 <th className="w-1/4 p-5 font-medium text-muted" />
                 <th className="w-1/4 bg-accent-soft/60 p-5">
-                  <span className="flex items-center gap-2 font-semibold">Loom</span>
+                  <span className="flex items-center gap-2 font-semibold"><Wordmark /></span>
                 </th>
                 <th className="w-1/4 p-5 font-semibold">Centralized lenders</th>
                 <th className="w-1/4 p-5 font-semibold">Variable-rate DeFi pools</th>
@@ -517,7 +518,7 @@ export default function Home() {
       </Section>
 
       {/* Roadmap */}
-      <Section eyebrow="Roadmap" title="Where Loom is going.">
+      <Section eyebrow="Roadmap" title="Where Loomzk is going.">
         <div className="grid gap-4 lg:grid-cols-3">
           {roadmap.map((r, i) => (
             <div key={r.phase} style={d(i * 110)} className={cx("reveal rounded-2xl border bg-surface p-6", r.tone === "accent" ? "border-accent/40 ring-4 ring-accent/5" : "border-border")}>

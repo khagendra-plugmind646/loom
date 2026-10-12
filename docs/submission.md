@@ -4,7 +4,7 @@ Fields marked **[fill in]** need your own facts. Update the traction numbers rig
 
 ## Product name
 
-Loom
+Loomzk
 
 ## One-line description
 
@@ -14,7 +14,7 @@ Borrow USDC or USDT against your SOL at a fixed 12% a year, with every escrow an
 
 Long-term SOL holders who need dollars have two bad options: sell (and lose their position, often with a tax bill) or borrow on DeFi money markets with variable rates and liquidation at the first sharp dip. Centralised lenders offer fixed terms, but borrowers have to trust a company with their collateral.
 
-Loom offers a fixed-term loan that is fully on-chain:
+Loomzk offers a fixed-term loan that is fully on-chain:
 
 - **Lock SOL worth 2× the loan** in an escrow that belongs to that loan alone. Nobody, the operator included, can move it except by repayment or the published liquidation rule.
 - **Receive USDC or USDT in the same transaction.**
@@ -57,7 +57,7 @@ SOL is priced with two oracles (Pyth and Chainlink): loans open at the lower pri
 **Phases:**
 1. **Devnet testers to mainnet beta.** Recruit testers through Superteam chapters, Solana Telegram/Discord groups and university blockchain clubs, using the `/test` guided tour and in-app feedback. Launch on mainnet with low per-loan caps after an independent audit of the program and circuit, with admin and upgrade keys under a Squads multisig.
 2. **Liquidity.** Open the Earn pool to depositors, who receive 90% of the fixed interest on the loans the pool funds. The proof-of-reserves page is the trust argument for depositors.
-3. **Credit certificates as a distribution channel.** Other protocols can verify a Loom certificate on-chain to give "verified repayers" better terms (higher LTV, lower rates, allowlists). Every integration brings borrowers back to Loom to earn a certificate.
+3. **Credit certificates as a distribution channel.** Other protocols can verify a Loomzk certificate on-chain to give "verified repayers" better terms (higher LTV, lower rates, allowlists). Every integration brings borrowers back to Loomzk to earn a certificate.
 
 **Revenue:** a 10% protocol fee on interest from pool-funded loans, all interest on treasury-funded loans, and SOL settled to the treasury under the published liquidation rules.
 

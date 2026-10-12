@@ -1,7 +1,7 @@
 /**
  * One-shot protocol setup for localnet / devnet:
  *   - creates test USDC + USDT mints (6 decimals) unless --usdc / --usdt are given
- *   - initializes the Loom config + ZK credit tree
+ *   - initializes the Loomzk config + ZK credit tree
  *   - creates both reserves, mints test USDC/USDT into the treasury (payout) wallet and
  *     approves the program to pay loans from it
  *   - writes app/.env.local so the UI points at the right cluster and mints

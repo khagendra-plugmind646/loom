@@ -1,6 +1,6 @@
-<p align="center"><img src="brand/banner.png" alt="Loom: borrow dollars against your SOL. Verify every step." width="800"></p>
+<p align="center"><img src="brand/banner.png" alt="Loomzk: borrow dollars against your SOL. Verify every step." width="800"></p>
 
-# Loom — transparent SOL-backed stablecoin loans on Solana
+# Loomzk — transparent SOL-backed stablecoin loans on Solana
 
 **Borrow USDC or USDT against your SOL at a fixed 12% a year, with every escrow and reserve verifiable on-chain, and a zero-knowledge credit history that earns you 8% next time.**
 
@@ -15,7 +15,7 @@
 
 > **New here? Start with [SETUP.md](SETUP.md)**: install, run the tests, and run the app locally step by step.
 
-Loom is a Ledn-style lending platform built entirely on Solana:
+Loomzk is a Ledn-style lending platform built entirely on Solana:
 
 * A borrower locks **SOL worth at least 2× the loan** in an on-chain **escrow**.
 * In the same transaction they receive **USDC or USDT** straight to their wallet.
@@ -51,7 +51,7 @@ scripts/           localnet, bootstrap, faucet, and an end-to-end demo against a
 
 ### A note on "100% transparent" and zero-knowledge
 
-On Solana, transparency comes from the chain itself: every lamport in escrow and every stablecoin in a vault is publicly visible and only moves under the program's rules. Zero-knowledge doesn't add transparency. It adds **verifiable privacy**: a borrower can prove a true statement about their repayment history to anyone, such as a new lender, an investor or another protocol, without exposing their wallet, the loan or the exact amounts. Loom uses each for what it does best: public state for solvency and auditability, ZK for privacy-preserving credit proofs.
+On Solana, transparency comes from the chain itself: every lamport in escrow and every stablecoin in a vault is publicly visible and only moves under the program's rules. Zero-knowledge doesn't add transparency. It adds **verifiable privacy**: a borrower can prove a true statement about their repayment history to anyone, such as a new lender, an investor or another protocol, without exposing their wallet, the loan or the exact amounts. Loomzk uses each for what it does best: public state for solvency and auditability, ZK for privacy-preserving credit proofs.
 
 ---
 
@@ -95,7 +95,7 @@ default       after maturity, anyone can settle:
               remainder + escrow rent → borrower
 ```
 
-### Accounts (all PDAs of the Loom program)
+### Accounts (all PDAs of the Loomzk program)
 
 ```
 Config        ["config"]                 admin, treasury, risk params, live protocol stats
@@ -230,7 +230,7 @@ The app is a standard Next.js 16 project in `app/`. On Vercel, set the root dire
 
 ### Admin database (Postgres)
 
-Everything Loom stores on-chain (config, reserves, loans with their settlement split, certificates and every program event) can be copied into a private Postgres database for the admin. The chain stays the source of truth: the database can be dropped and rebuilt with one indexer run.
+Everything Loomzk stores on-chain (config, reserves, loans with their settlement split, certificates and every program event) can be copied into a private Postgres database for the admin. The chain stays the source of truth: the database can be dropped and rebuilt with one indexer run.
 
 1. Create a Postgres database (Neon or Supabase) and put its connection string in `app/.env` as `DATABASE_URL=...` (server-only, never `NEXT_PUBLIC_`).
 2. `pnpm indexer --cluster devnet` creates the tables (`db/schema.sql`), backfills all history, then syncs every 15 s (`--once` for a single pass).

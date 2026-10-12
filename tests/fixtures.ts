@@ -74,7 +74,7 @@ export interface OpenLoanOpts {
 }
 
 /**
- * A fresh LiteSVM with the Loom program deployed, initialized, and USDC/USDT reserves whose
+ * A fresh LiteSVM with the Loomzk program deployed, initialized, and USDC/USDT reserves whose
  * payouts are approved by the treasury. Every test that calls this starts from the same clean
  * state, so tests never depend on each other's side effects.
  */

@@ -1,6 +1,6 @@
 pragma circom 2.1.9;
 
-// Loom — ZK Repayment Certificate
+// Loomzk — ZK Repayment Certificate
 // ---------------------------------
 // When a loan is repaid in full (principal + interest for the time it was open) before
 // its deadline, the on-chain program appends a "credit leaf" to a Poseidon Merkle tree.

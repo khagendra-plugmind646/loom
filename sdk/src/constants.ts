@@ -33,7 +33,7 @@ export const CREDIT_LIMIT_MULTIPLE = 2n;
 /** Interest is charged for at least 30 days (or the whole term if shorter). */
 export const MIN_INTEREST_SECS = 30 * 24 * 60 * 60;
 export const YEAR_SECS = 365 * 24 * 60 * 60;
-/** Share of the interest on pool-funded loans that goes to Loom's treasury; depositors earn the rest. */
+/** Share of the interest on pool-funded loans that goes to Loomzk's treasury; depositors earn the rest. */
 export const PROTOCOL_FEE_BPS = 1_000n;
 export const LOAN_TERM_SECS = 365 * 24 * 60 * 60;
 /** A loan can be settled once SOL trades at or below 60% of its price when the loan opened. */

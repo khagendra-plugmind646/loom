@@ -194,7 +194,7 @@ export default function BorrowPage() {
                 Lock <Fig>{formatSol(quote.collateral)} SOL</Fig> in escrow
               </>
             ),
-            detail: <>Worth ≈ ${formatStable(quote.collateralValue, 0)} today. Only the Loom program&apos;s rules can move it.</>,
+            detail: <>Worth ≈ ${formatStable(quote.collateralValue, 0)} today. Only the Loomzk program&apos;s rules can move it.</>,
           },
           {
             title: (
@@ -216,7 +216,7 @@ export default function BorrowPage() {
             ),
             detail: (
               <>
-                If you don&apos;t, Loom takes SOL worth what you owe (≈ {formatSol(quote.onDefault.toTreasury, 2)} SOL today) and ≈{" "}
+                If you don&apos;t, Loomzk takes SOL worth what you owe (≈ {formatSol(quote.onDefault.toTreasury, 2)} SOL today) and ≈{" "}
                 {formatSol(quote.onDefault.toBorrower, 2)} SOL comes back to you.
               </>
             ),
@@ -547,7 +547,7 @@ export default function BorrowPage() {
               </Row>
               <CostTable principal={quote.principal} rateBps={quote.rateBps ?? INTEREST_BPS} />
               <Row label="Repay by">{deadline}</Row>
-              <Row label="Funded by">{quote.fromPool ? "Loom lending pool" : "Loom treasury"}</Row>
+              <Row label="Funded by">{quote.fromPool ? "Loomzk lending pool" : "Loomzk treasury"}</Row>
               <div className="mt-4 border-t border-border pt-4">
                 <div className="text-sm font-medium">If SOL drops before the deadline</div>
                 <Row label="Collateral value today">${formatStable(quote.collateralValue ?? 0n)}</Row>
@@ -563,7 +563,7 @@ export default function BorrowPage() {
               <div className="mt-4 border-t border-border pt-4">
                 <div className="text-sm font-medium">If not repaid by the deadline</div>
                 <div className="mt-1 text-xs text-muted">At today&apos;s SOL price{price.data ? ` ($${usd(price.data.highest)}, the higher of the two oracles)` : ""}:</div>
-                <Row label="To Loom treasury">
+                <Row label="To Loomzk treasury">
                   {formatSol(quote.onDefault.toTreasury)} SOL <span className="text-muted">(≈ ${formatStable(quote.due)} owed)</span>
                 </Row>
                 <Row label="Back to your wallet">
@@ -584,8 +584,8 @@ export default function BorrowPage() {
               <div className="mt-4 border-t border-border pt-4 text-xs text-muted">
                 Interest is charged only for the time you borrow, on what you still owe, so repaying early costs less. Repay any time before the
                 deadline, in one go or in parts, in USDC or USDT. The last payment releases your SOL automatically. If the
-                deadline passes, Loom keeps only SOL worth what you still owe, at the SOL price when the loan is settled, and the rest returns to the
-                wallet that opened the loan. If SOL falls to 60% of its price when your loan opens, before the deadline, all of the SOL goes to Loom.
+                deadline passes, Loomzk keeps only SOL worth what you still owe, at the SOL price when the loan is settled, and the rest returns to the
+                wallet that opened the loan. If SOL falls to 60% of its price when your loan opens, before the deadline, all of the SOL goes to Loomzk.
                 Either way the loan is closed and you keep the stablecoin.
               </div>
             </>

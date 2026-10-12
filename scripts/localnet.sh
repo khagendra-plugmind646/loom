@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Local Solana validator with the Loom program preloaded and the live SOL/USD
+# Local Solana validator with the Loomzk program preloaded and the live SOL/USD
 # oracle accounts cloned from devnet: Pyth (real, Wormhole-verified price data) and Chainlink.
 #
 # The cloned price is a snapshot taken at startup, so bootstrap sets
@@ -13,7 +13,7 @@ SO="$ROOT/target/deploy/loom.so"
 [ -f "$SO" ] || { echo "missing $SO — run: pnpm build:program"; exit 1; }
 
 mkdir -p "$ROOT/.anchor"
-echo "Loom program $PROGRAM_ID"
+echo "Loomzk program $PROGRAM_ID"
 exec solana-test-validator \
   --reset \
   --ledger "$ROOT/.anchor/test-ledger" \

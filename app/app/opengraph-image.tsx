@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 // Link preview for X, Telegram, Discord etc. (also used as the Twitter card, see twitter-image.tsx).
-export const alt = "Loom: borrow dollars against your SOL. Verify every step.";
+export const alt = "Loomzk: borrow dollars against your SOL. Verify every step.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -39,7 +39,10 @@ export default function Image() {
           >
             L
           </div>
-          <div style={{ fontSize: 40, fontWeight: 700 }}>Loom</div>
+          <div style={{ display: "flex", alignItems: "flex-start" }}>
+            <div style={{ fontSize: 40, fontWeight: 700 }}>Loom</div>
+            <div style={{ fontSize: 24, fontWeight: 700, color: "#8b7bff", marginLeft: 2 }}>zk</div>
+          </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 76, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2 }}>Borrow dollars against your SOL.</div>

@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Checks that the tools needed to run Loom are installed.
+# Checks that the tools needed to run Loomzk are installed.
 ok=0
 check() { # name, command, required-for
   if command -v "$2" >/dev/null 2>&1; then printf "  ✔ %-10s %s\n" "$1" "$($2 --version 2>&1 | head -1)";
   else printf "  ✘ %-10s missing — needed for: %s\n" "$1" "$3"; ok=1; fi
 }
-echo "Loom prerequisites"
+echo "Loomzk prerequisites"
 check node node "everything (need v22+)"
 check pnpm pnpm "everything (need v11: corepack enable)"
 check solana solana "local validator, devnet deploy"

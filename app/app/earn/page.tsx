@@ -30,7 +30,7 @@ export default function EarnPage() {
     <>
       <PageHeader
         title="Earn on USDC and USDT"
-        subtitle="Deposit stablecoins into Loom's lending pool. New loans are funded from it first, and depositors earn the interest borrowers pay."
+        subtitle="Deposit stablecoins into Loomzk's lending pool. New loans are funded from it first, and depositors earn the interest borrowers pay."
       />
       {pools.isLoading ? (
         <Skeleton className="h-64" />
@@ -56,10 +56,10 @@ export default function EarnPage() {
         <ul className="space-y-2 text-sm text-muted">
           <li>• Every loan is backed by SOL worth at least 2× what was borrowed, locked in its own on-chain escrow.</li>
           <li>
-            • If a pool-funded loan is seized or not repaid, Loom&apos;s treasury pays the pool everything the loan still owes and takes the SOL. Depositors
-            are repaid in full; Loom carries the SOL price risk.
+            • If a pool-funded loan is seized or not repaid, Loomzk&apos;s treasury pays the pool everything the loan still owes and takes the SOL. Depositors
+            are repaid in full; Loomzk carries the SOL price risk.
           </li>
-          <li>• Depositors earn {100 - Number(PROTOCOL_FEE_BPS) / 100}% of the interest on pool-funded loans; Loom keeps {Number(PROTOCOL_FEE_BPS) / 100}%.</li>
+          <li>• Depositors earn {100 - Number(PROTOCOL_FEE_BPS) / 100}% of the interest on pool-funded loans; Loomzk keeps {Number(PROTOCOL_FEE_BPS) / 100}%.</li>
           <li>
             • You can withdraw whatever the pool isn&apos;t currently lending out. Lent-out money returns as borrowers repay. If the treasury can&apos;t
             buy out a loan, settling it waits until it can, so withdrawals of that part can be delayed.

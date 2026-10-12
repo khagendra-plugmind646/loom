@@ -1,4 +1,4 @@
-# Running Loom on a new machine
+# Running Loomzk on a new machine
 
 This guide gets the project running from the zip: tests first, then the full app on a local Solana network.
 For what the project is and how it works, see [README.md](README.md).
@@ -54,11 +54,11 @@ You need **two terminals**, both in the `LOOM` folder.
 ```bash
 pnpm localnet
 ```
-Wait until it prints slot numbers. This loads the Loom program and copies the live SOL/USD price from Pyth (devnet).
+Wait until it prints slot numbers. This loads the Loomzk program and copies the live SOL/USD price from Pyth (devnet).
 
 **Terminal 2: set up the protocol, fund your wallet, start the website**
 ```bash
-pnpm bootstrap                                  # creates test USDC/USDT, initializes Loom, fills the lending vaults
+pnpm bootstrap                                  # creates test USDC/USDT, initializes Loomzk, fills the lending vaults
 pnpm faucet --to <YOUR_PHANTOM_ADDRESS>         # gives you 20 SOL + 5,000 test USDC + 5,000 test USDT
 pnpm dev                                        # opens the website
 ```

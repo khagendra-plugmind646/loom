@@ -16,7 +16,7 @@ Goal: **20–50 testers** through `/test`, **10–20 conversations**, **2–3 pr
 ## 2. Ready-to-post messages
 
 **Tester call**
-> I'm building Loom: borrow USDC/USDT against SOL at a fixed 12% a year, only for the time you borrow, with every escrow and reserve verifiable on-chain. Repay on time and you get a zero-knowledge credit certificate: 8% on your next loan, from any wallet, without revealing the old one.
+> I'm building Loomzk: borrow USDC/USDT against SOL at a fixed 12% a year, only for the time you borrow, with every escrow and reserve verifiable on-chain. Repay on time and you get a zero-knowledge credit certificate: 8% on your next loan, from any wallet, without revealing the old one.
 > It's on devnet (no real money). The /test page walks you through everything in ~10 minutes and has a Feedback button. Brutal feedback welcome: https://loom-lending.vercel.app/test
 
 **Protocol / integration ask**

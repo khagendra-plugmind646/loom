@@ -45,14 +45,14 @@ export default function AdminPage() {
   if (!publicKey) return <EmptyState title="Connect the admin wallet" />;
   if (!config.data) return <InitializeCard />;
   if (!config.data.admin.equals(publicKey) && !config.data.treasury.equals(publicKey)) {
-    return <EmptyState title="This page is only for the Loom admin wallet" />;
+    return <EmptyState title="This page is only for the Loomzk admin wallet" />;
   }
 
   const isAdmin = config.data.admin.equals(publicKey);
   const isTreasury = config.data.treasury.equals(publicKey);
   return (
     <>
-      <PageHeader title="Operator" subtitle="Set how much USDC/USDT Loom may pay out, watch the payout wallet, and answer borrowers.">
+      <PageHeader title="Operator" subtitle="Set how much USDC/USDT Loomzk may pay out, watch the payout wallet, and answer borrowers.">
         <div className="flex gap-2">
           {isAdmin && <Badge tone="good">Admin</Badge>}
           {isTreasury && <Badge tone="good">Payout wallet</Badge>}
@@ -108,7 +108,7 @@ function InitializeCard() {
 
   return (
     <>
-      <PageHeader title="Initialize Loom" subtitle="One-time setup. The connected wallet becomes the admin." />
+      <PageHeader title="Initialize Loomzk" subtitle="One-time setup. The connected wallet becomes the admin." />
       <Card className="max-w-xl">
         <Field label="Payout (treasury) wallet" hint="Pays out loans; receives repayments and seized SOL">
           <Input value={treasury} onChange={(e) => setTreasury(e.target.value)} spellCheck={false} />
@@ -133,7 +133,7 @@ function FundsFlowCard({ treasury }: { treasury: PublicKey }) {
         <li className="rounded-xl bg-surface-2 p-4">
           <div className="font-medium">1 · Payout wallet approves a limit</div>
           <p className="mt-1 text-muted">
-            The payout wallet signs one approval per coin: &ldquo;Loom may pay out up to X&rdquo;. The coins stay in the wallet until a loan uses
+            The payout wallet signs one approval per coin: &ldquo;Loomzk may pay out up to X&rdquo;. The coins stay in the wallet until a loan uses
             them. No private key is stored anywhere.
           </p>
           <div className="mt-2">

@@ -37,7 +37,7 @@ export const encodeNote = (n: CreditNote) =>
 
 export function decodeNote(s: string): CreditNote {
   const [prefix, secret, nullifier] = s.trim().split(":");
-  if (prefix !== NOTE_PREFIX || !secret || !nullifier) throw new Error("invalid Loom credit note");
+  if (prefix !== NOTE_PREFIX || !secret || !nullifier) throw new Error("invalid Loomzk credit note");
   return { secret: BigInt("0x" + secret), nullifier: BigInt("0x" + nullifier) };
 }
 

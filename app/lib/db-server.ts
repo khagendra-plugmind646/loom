@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS faucet_claims (
 );`;
 
 /** Hosted (serverless, read-only file system) without DATABASE_URL: messages can't be saved. */
-export const STORAGE_UNAVAILABLE = "Saving messages isn't set up on this site yet. Please reach the Loom team on X or Telegram.";
+export const STORAGE_UNAVAILABLE = "Saving messages isn't set up on this site yet. Please reach the Loomzk team on X or Telegram.";
 
 /** The database with the app's own tables ready, or null when DATABASE_URL isn't set (local file fallback). */
 export async function appDb(): Promise<pg.Pool | null> {

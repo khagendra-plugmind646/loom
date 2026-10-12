@@ -29,7 +29,7 @@ export default function WalletPage() {
 
   return (
     <>
-      <PageHeader title="Wallet" subtitle="Send and receive SOL, USDC and USDT. Transfers are signed in your wallet; Loom never holds your keys." />
+      <PageHeader title="Wallet" subtitle="Send and receive SOL, USDC and USDT. Transfers are signed in your wallet; Loomzk never holds your keys." />
       <div className="grid gap-3 sm:grid-cols-3">
         <BalanceTile label="SOL" value={balances.data ? balances.data.solUi.toLocaleString(undefined, { maximumFractionDigits: 4 }) : null} />
         {STABLECOINS.map((s) => {

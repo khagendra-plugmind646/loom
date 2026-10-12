@@ -63,7 +63,7 @@ export function HelpForm({
       </Field>
       {error && <Notice tone="bad">{error}</Notice>}
       <Button variant="secondary" loading={state === "sending"} disabled={!contact.trim() || !message.trim()} onClick={submit}>
-        Send to the Loom team
+        Send to the Loomzk team
       </Button>
     </div>
   );

@@ -16,7 +16,7 @@ export function LiveStats() {
   if (!config.data) {
     return (
       <div className="rounded-2xl border border-dashed border-border bg-surface p-6 text-sm text-muted">
-        The Loom program isn&apos;t initialized on this cluster yet. The operator can set it up from the Operator page.
+        The Loomzk program isn&apos;t initialized on this cluster yet. The operator can set it up from the Operator page.
       </div>
     );
   }

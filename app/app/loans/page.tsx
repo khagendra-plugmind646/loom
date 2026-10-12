@@ -126,9 +126,9 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
   function addToCalendar() {
     const deadline = new Date(Number(loan.maturityTs) * 1000);
     downloadCalendarEvent({
-      title: `Repay Loom loan #${loan.id} (${formatStable(loan.principal)} ${symbolForMint(loan.mint)})`,
+      title: `Repay Loomzk loan #${loan.id} (${formatStable(loan.principal)} ${symbolForMint(loan.mint)})`,
       at: deadline,
-      description: `Repay by ${deadline.toLocaleString()}. If it isn't repaid, SOL worth what you still owe goes to Loom and the rest comes back to your wallet. Repay at ${window.location.origin}/loans`,
+      description: `Repay by ${deadline.toLocaleString()}. If it isn't repaid, SOL worth what you still owe goes to Loomzk and the rest comes back to your wallet. Repay at ${window.location.origin}/loans`,
       url: `${window.location.origin}/loans`,
       filename: `loom-loan-${loan.id}`,
     });
@@ -192,7 +192,7 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
           <Notice tone="warn">
             <span className="font-medium">Due in {daysLeft} day{daysLeft === 1 ? "" : "s"}.</span> Repay by{" "}
             {new Date(Number(loan.maturityTs) * 1000).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" })}, or SOL worth what you
-            still owe goes to Loom.
+            still owe goes to Loomzk.
           </Notice>
         </div>
       )}
@@ -236,14 +236,14 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
                 {!matured && <Row label="All SOL seized if SOL falls to">${seizeAt.toFixed(2)}</Row>}
                 {onDefault && (
                   <>
-                    <Row label={matured ? "On settlement, to Loom treasury" : "If unpaid by deadline, to Loom treasury"}>
+                    <Row label={matured ? "On settlement, to Loomzk treasury" : "If unpaid by deadline, to Loomzk treasury"}>
                       {formatSol(onDefault.toTreasury)} SOL <span className="text-muted">(at today&apos;s price)</span>
                     </Row>
                     <Row label={matured ? "On settlement, back to your wallet" : "If unpaid by deadline, back to your wallet"}>
                       {formatSol(onDefault.toBorrower)} SOL <span className="text-muted">(at today&apos;s price)</span>
                     </Row>
                     {config.data && (
-                      <Row label="Loom treasury">
+                      <Row label="Loomzk treasury">
                         <AddrCopy value={config.data.treasury.toBase58()} />
                       </Row>
                     )}
@@ -268,7 +268,7 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
         {loan.status === "active" ? (
           matured ? (
             <Notice tone="bad">
-              This loan passed its deadline and can no longer be repaid. When it is settled, Loom keeps SOL worth the {formatStable(outstanding)} still
+              This loan passed its deadline and can no longer be repaid. When it is settled, Loomzk keeps SOL worth the {formatStable(outstanding)} still
               owed, at the SOL price at that moment, and the rest of the {formatSol(loan.collateralLamports)} SOL is sent back to your wallet.
             </Notice>
           ) : (
@@ -342,7 +342,7 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
             {loan.status === "liquidated" ? "SOL fell to the seizure price" : "The loan wasn't repaid by its deadline"}, so it was closed.{" "}
             {settlement.data ? (
               <>
-                {formatSol(settlement.data.seizedLamports)} SOL went to the Loom treasury
+                {formatSol(settlement.data.seizedLamports)} SOL went to the Loomzk treasury
                 {settlement.data.returnedLamports > 0n ? ` and ${formatSol(settlement.data.returnedLamports)} SOL was sent back to your wallet` : ""}, at a SOL
                 price of ${(Number(settlement.data.price) * 10 ** settlement.data.priceExpo).toFixed(2)}.{" "}
                 <a className="font-medium underline" href={explorerUrl("tx", settlement.data.signature)} target="_blank" rel="noreferrer">
@@ -350,9 +350,9 @@ function LoanCard({ loan }: { loan: LoanAccount }) {
                 </a>
               </>
             ) : loan.status === "liquidated" ? (
-              `All ${formatSol(loan.collateralLamports)} SOL went to Loom.`
+              `All ${formatSol(loan.collateralLamports)} SOL went to Loomzk.`
             ) : (
-              "SOL worth the amount owed went to Loom and the rest was sent back to your wallet."
+              "SOL worth the amount owed went to Loomzk and the rest was sent back to your wallet."
             )}{" "}
             The {symbolForMint(loan.mint)} you received is yours to keep.
           </Notice>

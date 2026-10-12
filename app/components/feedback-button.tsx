@@ -59,14 +59,14 @@ export function FeedbackButton() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
-              <div className="text-base font-semibold">Help us improve Loom</div>
+              <div className="text-base font-semibold">Help us improve Loomzk</div>
               <button onClick={close} className="text-sm text-muted hover:text-fg" aria-label="Close">
                 ✕
               </button>
             </div>
             {state === "sent" ? (
               <div className="mt-4">
-                <Notice tone="good">Thanks! Your feedback goes straight to the Loom team.</Notice>
+                <Notice tone="good">Thanks! Your feedback goes straight to the Loomzk team.</Notice>
                 <Button className="mt-4 w-full" variant="secondary" onClick={close}>
                   Close
                 </Button>

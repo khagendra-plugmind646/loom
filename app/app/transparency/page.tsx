@@ -163,7 +163,7 @@ export default function TransparencyPage() {
               <Row label="Maximum term">{LOAN_TERM_SECS / 86_400} days</Row>
               <Row label="All SOL seized when">price ≤ 60% of its price at opening</Row>
               <Row label="Unpaid at deadline">SOL worth the debt to treasury, rest back to borrower</Row>
-              <Row label="Seized SOL and repayments go to">Loom treasury (visible in each transaction)</Row>
+              <Row label="Seized SOL and repayments go to">Loomzk treasury (visible in each transaction)</Row>
             </Card>
             <Card>
               <CardTitle hint="Snapshotted into every loan at origination">Risk settings</CardTitle>

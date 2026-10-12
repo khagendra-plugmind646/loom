@@ -1,7 +1,7 @@
 import { isAdminRequest } from "@/lib/admin-server";
 import { db } from "@/lib/db-server";
 
-/** Admin only: the indexed copy of Loom's on-chain data. */
+/** Admin only: the indexed copy of Loomzk's on-chain data. */
 export async function GET(req: Request) {
   if (!isAdminRequest(req)) return Response.json({ error: "Admin signature required" }, { status: 401 });
   const pool = db();
